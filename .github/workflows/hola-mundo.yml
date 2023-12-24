@@ -12,4 +12,4 @@ jobs:
       - name: Ejecutar script
         run: python hola_mundo.py
       - name: Ejecutar javascript
-        run: javascript hola_mundo.js
+        run: node hola_mundo.js
