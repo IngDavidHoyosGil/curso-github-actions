@@ -16,4 +16,4 @@ jobs:
       - name: Ejecutar rust
         run: rustc hola_mundo.rs && ./hola_mundo
       - name: Ejecutar golang
-        run: go hola_mundo.go
+        run: go run hola_mundo.go
