@@ -17,3 +17,5 @@ jobs:
         run: rustc hola_mundo.rs && ./hola_mundo
       - name: Ejecutar golang
         run: go run hola_mundo.go
+      - name: Ejecutar por terminal
+        run: echo "hello world Linux!"      
