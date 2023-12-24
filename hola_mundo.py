@@ -1,10 +1,6 @@
-import os
+#hello_world.py
+def hello_world():
+	print("Hello World, this is a test on Python")
 
-
-def main():
-    nombre = os.getenv("USERNAME")
-    print(f"¡Hola, {nombre} desde GitHub!")
-
-
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+	hello_world()	
