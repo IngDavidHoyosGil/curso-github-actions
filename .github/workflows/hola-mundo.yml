@@ -1,6 +1,5 @@
-#On /.github/workflows
-#hola-mundo.yml
-name: hola-mundo-action
+name: Aprendiendo GitHub Actions
+run-name: ¡Estoy aprendiendo GitHub Actions!
 on: [push]
 jobs:
   hola-mundo:
@@ -8,5 +7,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Ejecutar script
+      - name: Definir variable
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+      - name: Correr script
         run: python hola_mundo.py
