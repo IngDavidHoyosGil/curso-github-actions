@@ -1,43 +1,52 @@
-name: Expresiones
-run-name: ¡Estoy aprendiendo a usar Expresiones!
+name: Reto 3 - Aprende a usar Expresiones
+run-name: Gato con botas!
 on:
+  push:
+    branches:
+      - aprendiendo-github-actions
+
   workflow_dispatch:
     inputs:
-      edad:
-        description: '¿Qué edad tienes?'
-        required: true
-        type: integer
       nombre:
-        description: ¿Cómo te llamas?
+        description: 'Nombre'
         required: true
-        default: Agustina
+        default: Ingresa tu nombre
         type: string
-      nacionalidad:
-        description: ¿Dónde naciste?
+      edad:
+        description: 'Edad'
         required: true
-        type: string
+        type: number
+      fruta:
+        description: 'Lista de Frutas'
+        default: Manzana
+        required: true
+        type: choice
+        options:
+        - Frutilla
+        - Pera
+        - Manzana
 jobs:
-  mayor:
-    if: ${{ inputs.edad >= 18 }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: correr script
-        run: echo ${{ inputs.nombre }} es mayor de edad
-  menor: 
-    if: ${{ inputs.edad < 18 }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: correr script
-        run: echo ${{ inputs.nombre }} es menor de edad
-  suscripcion_no:
-    if: ${{ inputs.nacionalidad != España }}
-    runs-on: ubuntu-latest
-    steps: 
-      - name: correr script
-        run: echo ${{ inputs.nacionalidad}} no es un país apto para la suscripción.
-  suscripcion_si:
-    if: ${{ inputs.nacionalidad == España }}
-    runs-on: ubuntu-latest
-    steps: 
-      - name: correr script
-        run: echo ${{ inputs.nacionalidad}} sí es un país apto para la suscripción.
+    fruta-favorita:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Fruta Seleccionada
+        run: |
+          if ${{ inputs.fruta == 'Frutilla' }}; then
+            echo ${{ inputs.nombre }} Tu fruta favorita es la Frutilla 
+          elif ${{ inputs.fruta == 'Pera' }}; then
+            echo ${{ inputs.nombre }} Tu fruta favorita es la Pera
+          else 
+            echo ${{ inputs.nombre }} Tu fruta favorita es la Manzana
+          fi
+    mayor:
+      if: ${{ inputs.edad >= 18 }} 
+      runs-on: ubuntu-latest
+      steps:
+        - name: Correr script
+          run: echo ${{ inputs.nombre }} es mayor de edad
+    menor:
+      if: ${{ inputs.edad < 18 }} 
+      runs-on: ubuntu-latest
+      steps:
+        - name: Correr script
+          run: echo ${{ inputs.nombre }} es menor de edad        
