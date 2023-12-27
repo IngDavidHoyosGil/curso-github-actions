@@ -1,4 +1,5 @@
 name: Workflow Dispatch Freeform Input Example
+run-name: Example of a workflow with inputs
 
 on:
   workflow_dispatch:
