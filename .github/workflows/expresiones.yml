@@ -4,8 +4,7 @@ on:
   push:
     branches:
       - aprendiendo-github-actions
-
-  workflow-dispatch:
+  workflow_dispatch:
     inputs:
       nombre:
         description: 'Nombre'
