@@ -5,12 +5,12 @@ on:
     branches:
       - aprendiendo-github-actions
 
-  workflow_dispatch:
+  workflow-dispatch:
     inputs:
       nombre:
         description: 'Nombre'
         required: true
-        default: Ingresa tu nombre
+        default: 'Ingresa tu nombre'
         type: string
       edad:
         description: 'Edad'
@@ -18,35 +18,37 @@ on:
         type: number
       fruta:
         description: 'Lista de Frutas'
-        default: Manzana
+        default: 'Manzana'
         required: true
         type: choice
         options:
-        - Frutilla
-        - Pera
-        - Manzana
+          - Frutilla
+          - Pera
+          - Manzana
 jobs:
-    fruta-favorita:
-      runs-on: ubuntu-latest
-      steps:
+  fruta-favorita:
+    runs-on: ubuntu-latest
+    steps:
       - name: Fruta Seleccionada
         run: |
-          if ${{ inputs.fruta == 'Frutilla' }}; then
-            echo ${{ inputs.nombre }} Tu fruta favorita es la Frutilla 
-          elif ${{ inputs.fruta == 'Pera' }}; then
-            echo ${{ inputs.nombre }} Tu fruta favorita es la Pera
+          if [ "${{ inputs.fruta }}" == 'Frutilla' ]; then
+            echo "${{ inputs.nombre }}" Tu fruta favorita es la Frutilla 
+          elif [ "${{ inputs.fruta }}" == 'Pera' ]; then
+            echo "${{ inputs.nombre }}" Tu fruta favorita es la Pera
           else 
-            echo ${{ inputs.nombre }} Tu fruta favorita es la Manzana
+            echo "${{ inputs.nombre }}" Tu fruta favorita es la Manzana
           fi
-    mayor:
-      if: ${{ inputs.edad >= 18 }} 
-      runs-on: ubuntu-latest
-      steps:
-        - name: Correr script
-          run: echo ${{ inputs.nombre }} es mayor de edad
-    menor:
-      if: ${{ inputs.edad < 18 }} 
-      runs-on: ubuntu-latest
-      steps:
-        - name: Correr script
-          run: echo ${{ inputs.nombre }} es menor de edad        
+
+  mayor:
+    if: ${{ inputs.edad >= 18 }} 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Correr script
+        run: echo "${{ inputs.nombre }}" es mayor de edad
+
+  menor:
+    if: ${{ inputs.edad < 18 }} 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Correr script
+        run: echo "${{ inputs.nombre }}" es menor de edad
