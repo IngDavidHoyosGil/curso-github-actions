@@ -1,0 +1,21 @@
+name: Aprendiendo GitHub Actions
+run-name: ¡Estoy aprendiendo GitHub Actions - Nuevo test!
+on:
+  push:
+    branches: [ "aprendiendo-github-actions" ]
+jobs:
+  hola-mundo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Ejecutar script de python
+        run: python hola_mundo.py
+      - name: Ejecutar javascript
+        run: node hola_mundo.js
+      - name: Ejecutar rust
+        run: rustc hola_mundo.rs && ./hola_mundo
+      - name: Ejecutar golang
+        run: go run hola_mundo.go
+      - name: Ejecutar por terminal
+        run: echo "hello world Linux!"      

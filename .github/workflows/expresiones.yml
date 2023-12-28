@@ -1,0 +1,20 @@
+name: Expresiones
+run-name: Gato con botitas
+on:
+  workflow_dispatch:
+    inputs:
+      edad:
+        description: 'Edad'
+        required: true
+        type: integer
+      nombre:
+        description: 'Tu nombre'
+        required: true
+        default: 'David'
+        type: string
+jobs:
+  hola-mundito:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hola mundo
+        run: python hola_mundo.py
